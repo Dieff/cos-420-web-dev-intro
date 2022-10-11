@@ -4,8 +4,12 @@ import "./App.css";
 function App(): JSX.Element {
     return (
         <div className="App">
-            <header className="App-header">COS420</header>
-            <p>Hello World</p>
+            <header className="App-header">
+                UM COS420 with React Hooks and TypeScript
+            </header>
+            <p>
+                Edit <code>src/App.tsx</code> and save to reload.
+            </p>
         </div>
     );
 }
