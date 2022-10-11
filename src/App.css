@@ -37,3 +37,13 @@
         transform: rotate(360deg);
     }
 }
+
+/*
+ Create a smallish red rectangle.
+*/
+.Red-rect {
+    background-color: #f10606;
+    width: 20rem;
+    height: 20rem;
+    margin: 1rem;
+}
