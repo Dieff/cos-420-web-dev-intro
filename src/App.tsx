@@ -4,7 +4,8 @@ import "./App.css";
 function App(): JSX.Element {
     return (
         <div className="App">
-            <h1 className="App-header">UM COS420: Task 2</h1>
+            <header className="App-header">UM COS420</header>
+            <h1>Task 2</h1>
             <img
                 src="https://highered.aspeninstitute.org/wp-content/uploads/2022/06/univ-maine-system.jpeg"
                 alt="The University of Maine, from above"
