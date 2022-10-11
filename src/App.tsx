@@ -1,5 +1,10 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 import "./App.css";
+
+function logButton() {
+    console.log("Hello World!");
+}
 
 function App(): JSX.Element {
     return (
@@ -19,6 +24,7 @@ function App(): JSX.Element {
                 <li>Create a two-column layout</li>
                 <li>Red tectangle</li>
             </ul>
+            <Button onClick={logButton}>Log Hello World</Button>
         </div>
     );
 }
