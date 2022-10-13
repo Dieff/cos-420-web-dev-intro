@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/cos-420-web-dev-intro/static/css/main.39f589df.css",
-    "main.js": "/cos-420-web-dev-intro/static/js/main.6735ca7b.js",
+    "main.css": "/cos-420-web-dev-intro/static/css/main.541f73a7.css",
+    "main.js": "/cos-420-web-dev-intro/static/js/main.b0835fcb.js",
     "static/js/787.4ef7427d.chunk.js": "/cos-420-web-dev-intro/static/js/787.4ef7427d.chunk.js",
     "index.html": "/cos-420-web-dev-intro/index.html",
-    "main.39f589df.css.map": "/cos-420-web-dev-intro/static/css/main.39f589df.css.map",
-    "main.6735ca7b.js.map": "/cos-420-web-dev-intro/static/js/main.6735ca7b.js.map",
+    "main.541f73a7.css.map": "/cos-420-web-dev-intro/static/css/main.541f73a7.css.map",
+    "main.b0835fcb.js.map": "/cos-420-web-dev-intro/static/js/main.b0835fcb.js.map",
     "787.4ef7427d.chunk.js.map": "/cos-420-web-dev-intro/static/js/787.4ef7427d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.39f589df.css",
-    "static/js/main.6735ca7b.js"
+    "static/css/main.541f73a7.css",
+    "static/js/main.b0835fcb.js"
   ]
 }
