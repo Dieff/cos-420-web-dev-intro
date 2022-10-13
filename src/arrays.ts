@@ -109,6 +109,13 @@ export function makeMath(addends: number[]): string {
     return `${total}=${addition_string}`;
 }
 
+/** Holds the state of a reduce loop for the `injectPositive` function */
+interface InPosReduceState {
+    reachedNegative: boolean;
+    sum: number;
+    items: number[];
+}
+
 /**
  * Consumes an array of numbers and produces a new array of the same numbers,
  * with one difference. After the FIRST negative number, insert the sum of all
@@ -119,5 +126,30 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    if (values.length === 0) {
+        return [0];
+    }
+    return values.reduce<InPosReduceState>(
+        (state, cur, ind) => {
+            // every item from the old list must be in the new list
+            state.items.push(cur);
+            // If the first negative has been reached, insert the sum and stop summing
+            if (cur < 0 && !state.reachedNegative) {
+                state.items.push(state.sum);
+                state.reachedNegative = true;
+            } else {
+                state.sum += cur;
+            }
+            // If we are at the end and there have been no negatives, insert the sum
+            if (ind === values.length - 1 && !state.reachedNegative) {
+                state.items.push(state.sum);
+            }
+            return state;
+        },
+        {
+            reachedNegative: false,
+            sum: 0,
+            items: []
+        }
+    ).items;
 }
