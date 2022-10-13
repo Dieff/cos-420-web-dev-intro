@@ -86,7 +86,7 @@ export function allRGB(colors: string[]): boolean {
     const color_allowlist = new Set(["red", "green", "blue"]);
     return colors.reduce(
         (state, cur_color) => state && color_allowlist.has(cur_color),
-        true
+        true as boolean
     );
 }
 
