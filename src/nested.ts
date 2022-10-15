@@ -1,6 +1,6 @@
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
-import { makeBlankQuestion } from "./objects";
+import { duplicateQuestion, makeBlankQuestion } from "./objects";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
@@ -158,7 +158,10 @@ export function renameQuestionById(
     targetId: number,
     newName: string
 ): Question[] {
-    return [];
+    return questions.map((q) => ({
+        ...q,
+        name: q.id === targetId ? newName : q.name
+    }));
 }
 
 /***
@@ -173,7 +176,41 @@ export function changeQuestionTypeById(
     targetId: number,
     newQuestionType: QuestionType
 ): Question[] {
-    return [];
+    return questions.map((q) => {
+        const nq = { ...q };
+        if (nq.id === targetId) {
+            nq.type = newQuestionType;
+            if (nq.type !== "multiple_choice_question") {
+                nq.options = [];
+            }
+        }
+        return nq;
+    });
+}
+
+/**
+ * Mutates a list to add or replace an option
+ * @param options a list to be mutated
+ * @param targetOptionIndex index or -1
+ * @param newOption: string
+ */
+function replaceOrAppend<T>(
+    options: T[],
+    targetOptionIndex: number,
+    newOption: T
+) {
+    if (targetOptionIndex < -1) {
+        throw new Error("targetOptionIndex must be -1 or an array index");
+    }
+    if (targetOptionIndex == -1) {
+        options.push(newOption);
+        return;
+    }
+    if (targetOptionIndex < options.length) {
+        options[targetOptionIndex] = newOption;
+        return;
+    }
+    // if the targetOptionIndex is greater, do nothing
 }
 
 /**
@@ -192,7 +229,13 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string
 ): Question[] {
-    return [];
+    return questions.map((q) => {
+        const nq = { ...q, options: [...q.options] };
+        if (nq.id === targetId) {
+            replaceOrAppend(nq.options, targetOptionIndex, newOption);
+        }
+        return nq;
+    });
 }
 
 /***
@@ -206,5 +249,11 @@ export function duplicateQuestionInArray(
     targetId: number,
     newId: number
 ): Question[] {
-    return [];
+    return questions.reduce<Question[]>((new_q_array, question) => {
+        new_q_array.push(question);
+        if (question.id === targetId) {
+            new_q_array.push(duplicateQuestion(newId, question));
+        }
+        return new_q_array;
+    }, []);
 }
