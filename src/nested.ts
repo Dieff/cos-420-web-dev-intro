@@ -6,7 +6,9 @@ import { Question, QuestionType } from "./interfaces/question";
  * that are `published`.
  */
 export function getPublishedQuestions(questions: Question[]): Question[] {
-    return [];
+    return questions
+        .filter(({ published }) => published)
+        .map((q) => ({ ...q })); // copy the question objects
 }
 
 /**
@@ -15,7 +17,11 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-    return [];
+    // confusing prettier issue here:
+    // prettier-ignore
+    return questions.filter(({ body, expected, options }) =>
+        body.length > 0 || expected.length > 0 || options.length > 0
+    );
 }
 
 /***
@@ -26,6 +32,10 @@ export function findQuestion(
     questions: Question[],
     id: number
 ): Question | null {
+    const search_result = questions.find(({ id: qid }) => id === qid);
+    if (search_result) {
+        return search_result;
+    }
     return null;
 }
 
@@ -34,7 +44,7 @@ export function findQuestion(
  * with the given `id`.
  */
 export function removeQuestion(questions: Question[], id: number): Question[] {
-    return [];
+    return questions.filter(({ id: qid }) => qid !== id);
 }
 
 /***
@@ -42,21 +52,22 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
  * questions, as an array.
  */
 export function getNames(questions: Question[]): string[] {
-    return [];
+    return questions.map(({ name }) => name);
 }
 
 /***
  * Consumes an array of questions and returns the sum total of all their points added together.
  */
 export function sumPoints(questions: Question[]): number {
-    return 0;
+    return questions.reduce((sum, { points }) => sum + points, 0);
 }
 
 /***
  * Consumes an array of questions and returns the sum total of the PUBLISHED questions.
  */
 export function sumPublishedPoints(questions: Question[]): number {
-    return 0;
+    // is it ok to reuse functions I have already implemented?
+    return sumPoints(getPublishedQuestions(questions));
 }
 
 /***
