@@ -88,7 +88,11 @@ id,name,options,points,published
  * Check the unit tests for more examples!
  */
 export function toCSV(questions: Question[]): string {
-    return "";
+    return questions.reduce(
+        (csv, cq) =>
+            `${csv}\n${cq.id},${cq.name},${cq.options.length},${cq.points},${cq.published}`,
+        "id,name,options,points,published"
+    );
 }
 
 /**
@@ -97,7 +101,12 @@ export function toCSV(questions: Question[]): string {
  * making the `text` an empty string, and using false for both `submitted` and `correct`.
  */
 export function makeAnswers(questions: Question[]): Answer[] {
-    return [];
+    return questions.map(({ id }) => ({
+        questionId: id,
+        text: "",
+        submitted: false,
+        correct: false
+    }));
 }
 
 /***
