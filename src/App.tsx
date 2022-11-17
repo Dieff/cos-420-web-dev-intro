@@ -33,9 +33,9 @@ function App(): JSX.Element {
                 expectedAnswer="b"
             ></MultipleChoiceQuestion>
             <hr></hr>
-            <DoubleHalf></DoubleHalf>
-            <hr></hr>
             <ChangeColor></ChangeColor>
+            <hr></hr>
+            <DoubleHalf></DoubleHalf>
             <hr></hr>
             <ChooseTeam></ChooseTeam>
             <hr></hr>
