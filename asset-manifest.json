@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/cos-420-web-dev-intro/static/css/main.541f73a7.css",
-    "main.js": "/cos-420-web-dev-intro/static/js/main.116f12c3.js",
+    "main.js": "/cos-420-web-dev-intro/static/js/main.9af86dcc.js",
     "static/js/787.4ef7427d.chunk.js": "/cos-420-web-dev-intro/static/js/787.4ef7427d.chunk.js",
     "index.html": "/cos-420-web-dev-intro/index.html",
     "main.541f73a7.css.map": "/cos-420-web-dev-intro/static/css/main.541f73a7.css.map",
-    "main.116f12c3.js.map": "/cos-420-web-dev-intro/static/js/main.116f12c3.js.map",
+    "main.9af86dcc.js.map": "/cos-420-web-dev-intro/static/js/main.9af86dcc.js.map",
     "787.4ef7427d.chunk.js.map": "/cos-420-web-dev-intro/static/js/787.4ef7427d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.541f73a7.css",
-    "static/js/main.116f12c3.js"
+    "static/js/main.9af86dcc.js"
   ]
 }
