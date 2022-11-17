@@ -16,20 +16,22 @@ export function CheckAnswer({
 
     return (
         <Container>
-            <Col>
-                <Row>
-                    <h3>Check Answer</h3>
-                </Row>
-                <Row>
+            <Row>
+                <h3>Check Answer</h3>
+            </Row>
+            <Row>
+                <Col>
                     <Form.Control
                         value={userAnswer}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                             setUserAnswer(e.target.value);
                         }}
                     />
+                </Col>
+                <Col>
                     <Form.Label>{answerStatus}</Form.Label>
-                </Row>
-            </Col>
+                </Col>
+            </Row>
         </Container>
     );
 }
